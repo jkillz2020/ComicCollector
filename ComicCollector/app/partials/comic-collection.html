@@ -1,0 +1,9 @@
+﻿<div ng-repeat="comic in comics">
+
+    <div class="col-md-3 col-md-offset-1">
+        <div class="row"><a href="#/comics/view/{{comic.id}}">{{comic.seriesName}}</a></div>
+        <div class="row">{{comic.description}}</div>
+    </div>
+    <div class="col-xs-1"><button class="btn btn-danger fa fa-trash-o" ng-click="deleteComic(comic.id)"></button></div>
+
+</div>

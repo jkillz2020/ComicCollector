@@ -1,0 +1,14 @@
+﻿<div>
+    <input type="search" name="comicSearch" placeholder="Find your comics!" ng-model="searchInfo"></input>
+    <button type="button" class="btn btn-danger" ng-click="getComics(searchInfo)">Find!</button>
+    <button ng-click="loadData()"></button>
+</div>
+<div ng-repeat="comic in comicInfo">
+
+    <div class="col-md-3">
+        <div class="row">{{comic.name}}</div>
+        <div class="row">{{comic.description}}</div>
+        <!--<img ng-src="{{comic.img.html_attributions}}"></img>-->
+        <button type="button" class="btn btn-danger" ng-click="addComic()">Add To Your Collection!</button>
+    </div>
+</div>  
