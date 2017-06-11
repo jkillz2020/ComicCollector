@@ -13,7 +13,7 @@ namespace ComicCollector.Models
         public string Series { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string Password { get; set; }
-        public int Issue { get; set; }
+        public int IssueNumber { get; set; }
+        public string Image { get; set; }
     }
 }

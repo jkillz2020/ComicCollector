@@ -8,6 +8,11 @@ app.config([
                 templateUrl: "app/partials/login.html",
                 controller: "LoginCtrl"
             })
+            .when("/register",
+            {
+                templateUrl: "app/partials/register.html",
+                controller: "RegisterCtrl"
+            })
             .when("/home",
             {
                 templateUrl: "app/partials/comic-collection.html",

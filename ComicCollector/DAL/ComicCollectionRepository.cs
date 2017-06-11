@@ -10,7 +10,7 @@ using System.Web.Http;
 namespace ComicCollector.DAL
 {
     [RoutePrefix("api/comiccollections")]
-    public class ComicCollectionRepository  
+    public class ComicCollectionRepository
     {
         readonly ApplicationDbContext _context;
         private IRestClient _restClient;
@@ -31,9 +31,9 @@ namespace ComicCollector.DAL
 
         public IEnumerable<ComicCollection> GetAll()
         {
-            var request = new RestRequest("https://gateway.marvel.com:443/v1/public/series?titleStartsWith=wolverine&apikey=570494d5a6a681b21681b10b3bf4d61c", Method.GET);
-            
-                        var response = _restClient.Get<List<ComicCollection>>(request);
+            var request = new RestRequest("v1/public/series?titleStartsWith=wolverine&apikey=570494d5a6a681b21681b10b3bf4d61c", Method.GET);
+
+            var response = _restClient.Get<List<ComicCollection>>(request);
 
             return response.Data;
 

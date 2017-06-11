@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MarvelAPI, Version=0.1.2.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MarvelAPI.0.1.2.2\lib\net45\MarvelAPI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -262,6 +266,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ComicCollectionsController.cs" />
+    <Compile Include="Controllers\ComicController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IComicCollectionRepository.cs" />
     <Compile Include="Controllers\IUserRepository.cs" />
@@ -282,6 +287,14 @@
     <Compile Include="Migrations\201706072326088_initialState.cs" />
     <Compile Include="Migrations\201706072326088_initialState.Designer.cs">
       <DependentUpon>201706072326088_initialState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706101836538_ComicCollection.cs" />
+    <Compile Include="Migrations\201706101836538_ComicCollection.Designer.cs">
+      <DependentUpon>201706101836538_ComicCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706101847033_ComicCollection1.cs" />
+    <Compile Include="Migrations\201706101847033_ComicCollection1.Designer.cs">
+      <DependentUpon>201706101847033_ComicCollection1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -377,6 +390,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Comics\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -389,6 +403,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706072326088_initialState.resx">
       <DependentUpon>201706072326088_initialState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706101836538_ComicCollection.resx">
+      <DependentUpon>201706101836538_ComicCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706101847033_ComicCollection1.resx">
+      <DependentUpon>201706101847033_ComicCollection1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
