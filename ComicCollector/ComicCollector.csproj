@@ -311,6 +311,7 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\appConstants.js" />
+    <Content Include="app\controllers\NavCtrl.js" />
     <Content Include="app\factories\ComicCollectionFactory.js" />
     <Content Include="app\partials\comic-collection.html" />
     <Content Include="app\partials\comic-detail.html" />

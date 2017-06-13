@@ -1,5 +1,6 @@
 ﻿using ComicCollector.Models;
 using MarvelAPI;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Web.Http;
 
 namespace ComicCollector.Controllers
 {
+    [Authorize]
     public class ComicFinderController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -19,6 +21,8 @@ namespace ComicCollector.Controllers
         [HttpGet, Route("api/comicfinder/{character?}")]
         public IEnumerable<MarvelAPI.Comic> GetSeries(string character)
         {
+            User.Identity.GetUserId();
+
             var seriesIds = _client.GetSeries(Title: character ?? "Wolverine").Select(x => x.Id);
             var comicsForSeries = _client.GetComics(Series: seriesIds);
             return comicsForSeries;

@@ -4,7 +4,7 @@
             $scope.Password = "123456",
             $scope.ConfirmPassword = "123456";
 
-        $scope.signup = function () {
+        $scope.Register = function () {
             var newUser = {
                 Email: $scope.Email,
                 Password: $scope.Password,
@@ -13,6 +13,6 @@
 
             $http.post("/api/account/register", newUser);
 
-            $location.path("/home");
+            $location.path("/login");
         };
     }]);
