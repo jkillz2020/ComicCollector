@@ -266,14 +266,16 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ComicCollectionsController.cs" />
-    <Compile Include="Controllers\ComicController.cs" />
+    <Compile Include="Controllers\ComicFinderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IComicCollectionRepository.cs" />
+    <Compile Include="Controllers\IComicFinderRepository.cs" />
     <Compile Include="Controllers\IUserRepository.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DAL\AppContext.cs" />
     <Compile Include="DAL\ComicCollectionRepository.cs" />
+    <Compile Include="DAL\ComicFinderRepository.cs" />
     <Compile Include="DAL\UserRepository.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
@@ -309,6 +311,7 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\appConstants.js" />
+    <Content Include="app\factories\ComicCollectionFactory.js" />
     <Content Include="app\partials\comic-collection.html" />
     <Content Include="app\partials\comic-detail.html" />
     <Content Include="app\controllers\ComicApiCtrl.js" />

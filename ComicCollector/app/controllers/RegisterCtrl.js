@@ -4,20 +4,14 @@
             $scope.Password = "123456",
             $scope.ConfirmPassword = "123456";
 
-        $scope.signUp = function () {
+        $scope.signup = function () {
+            var newUser = {
+                Email: $scope.Email,
+                Password: $scope.Password,
+                ConfirmPassword: $scope.ConfirmPassword
+            }
 
-            $http({
-                url: "/api/Account/Register",
-                method: "POST",
-                data: {
-                    "Email": $scope.Email,
-                    "Password": $scope.Password,
-                    "ConfirmPassword": $scope.ConfirmPassword
-                }
-            })
-                .then(function (result) {
-                    console.log(result);
-                });
+            $http.post("/api/account/register", newUser);
 
             $location.path("/home");
         };

@@ -15,7 +15,7 @@ namespace ComicCollector
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
+                url: "{*wildcard}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
