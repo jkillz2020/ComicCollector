@@ -1,11 +1,11 @@
 ﻿"use strict";
 
-app.factory('ComicCollectionFactory', function ($q, $http, MY_API_CONFIG) {
+app.factory('ComicCollectionFactory', function ($q, $http) {
 
     var getComicCollection = function (userId) {
         return $q((resolve, reject) => {
             $http.get(`${MY_API_CONFIG.databaseURL}/Comics.json?orderBy="uid"&equalTo="${userId}"`)
-              .success(function (response) {
+              .then(function (response) {
                   let Comics = [];
                   Object.keys(response).forEach(function (key) {
                       response[key].id = key;
@@ -21,27 +21,19 @@ app.factory('ComicCollectionFactory', function ($q, $http, MY_API_CONFIG) {
 
     var postNewComic = function (newComic) {
         return $q((resolve, reject) => {
-            $http.post(`${MY_API_CONFIG.databaseURL}/Comics.json`,
-              JSON.stringify({
-                  Series: newComic.Series,
-                  Title: newComic.Title,
-                  Description: newComic.Description,
-                  Uid: newComic.Uid
-              })
-            )
-              .success(function (postResponse) {
+            $http.post(`api/comiccollection`, newComic)
+              .then(function (postResponse) {
                   resolve(postResponse);
-              })
-              .error(function (postError) {
+              }, function (postError) {
                   reject(postError);
-              })
+              });
         })
     }
 
     var deleteComic = function (comicId) {
         return $q((resolve, reject) => {
             $http.delete(`${MY_API_CONFIG.databaseURL}/Comics/${comicId}.json`)
-            .success(function (deleteResponse) {
+            .then(function (deleteResponse) {
                 resolve(deleteResponse);
             })
             .error(function (deleteError) {

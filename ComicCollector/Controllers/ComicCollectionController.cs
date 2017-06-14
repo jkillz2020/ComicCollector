@@ -13,18 +13,12 @@ using Microsoft.AspNet.Identity;
 
 namespace ComicCollector.Controllers
 {
-    public class ComicCollectionsController : ApiController
+    public class ComicCollectionController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private Models.Comic _comicCollection;
-
-        public ComicCollectionsController(Models.Comic comicCollection)
-        {
-            _comicCollection = comicCollection;
-        }
 
         // GET: api/ComicCollections
-        public IQueryable<Models.Comic> GetComicCollection()
+        public IQueryable<Comic> GetComicCollection()
         {
             return db.ComicCollection;
         }
@@ -79,7 +73,7 @@ namespace ComicCollector.Controllers
 
         // POST: api/ComicCollections
         [ResponseType(typeof(Models.Comic))]
-        public IHttpActionResult PostComicCollection(Models.Comic comicCollection)
+        public IHttpActionResult PostComicCollection(Comic comicCollection)
         {
             if (!ModelState.IsValid)
             {

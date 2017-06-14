@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-app.controller("ComicApiCtrl", function ($scope, $rootScope, $routeParams, $location, ComicFinderFactory, ComicCollectionFactory) {
+app.controller("ComicApiCtrl", function ($scope, $rootScope, $routeParams, $location, ComicFinderFactory) {
     let searchInfo = $scope.input
     let comicInfo = {};
     $scope.getPlaces = function (searchInfo) {
