@@ -1,8 +1,8 @@
 ﻿using ComicCollector.Models;
 using MarvelAPI;
-using Microsoft.AspNet.Identity;
-using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace ComicCollector.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ComicFinderController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -21,7 +21,7 @@ namespace ComicCollector.Controllers
         [HttpGet, Route("api/comicfinder/{character?}")]
         public IEnumerable<MarvelAPI.Comic> GetSeries(string character)
         {
-            User.Identity.GetUserId();
+            //User.Identity.GetUserId();
 
             var seriesIds = _client.GetSeries(Title: character ?? "Wolverine").Select(x => x.Id);
             var comicsForSeries = _client.GetComics(Series: seriesIds);
@@ -37,11 +37,7 @@ namespace ComicCollector.Controllers
             return "value";
         }
 
-        // POST: api/Comic
-        //[HttpPost, Route("api/comiccollection")]
-        public void Post([FromBody]string value)
-        {
-        }
+        
 
         // PUT: api/Comic/5
         public void Put(int id, [FromBody]string value)
@@ -62,11 +58,12 @@ namespace ComicCollector.Controllers
          public string Thumbnail { get; set; }
       }
  
-       public class Comic
-       {
-         public string Title { get; set; }
-         public string Description { get; set; }
-         public string Stories { get; set; }
-         public string Image { get; set; }
-       }
+       //public class Comic
+       //{
+       //  public int Uid { get; set; }
+       //  public string Title { get; set; }
+       //  public string Description { get; set; }
+       //  public string Stories { get; set; }
+       //  public string Image { get; set; }
+       //}
 }

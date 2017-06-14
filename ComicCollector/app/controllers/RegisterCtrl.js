@@ -13,6 +13,6 @@
 
             $http.post("/api/account/register", newUser);
 
-            $location.path("/login");
+            $location.path("/find-comics");
         };
     }]);

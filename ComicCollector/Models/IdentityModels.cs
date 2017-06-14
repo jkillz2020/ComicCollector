@@ -24,9 +24,10 @@ namespace ComicCollector.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            
-    }
-        public DbSet<ComicCollection> ComicCollection { get; set; }
+
+        }
+
+        public DbSet<Comic> ComicCollection { get; set; }
 
         public static ApplicationDbContext Create()
         {

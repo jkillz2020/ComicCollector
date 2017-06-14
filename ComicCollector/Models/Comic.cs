@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ComicCollector.Models
 {
-    public class ComicCollection
+    public class Comic
     {
         [Key]
         public int ComicId { get; set; }
@@ -15,5 +15,6 @@ namespace ComicCollector.Models
         public string Description { get; set; }
         public int IssueNumber { get; set; }
         public string Image { get; set; }
+        public int Uid { get; set; }
     }
 }

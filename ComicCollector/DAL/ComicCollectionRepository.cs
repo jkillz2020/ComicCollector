@@ -1,16 +1,14 @@
-﻿using ComicCollector.Models;
+﻿using ComicCollector.Controllers;
+using ComicCollector.Models;
 using RestSharp;
-using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 
 namespace ComicCollector.DAL
 {
     [RoutePrefix("api/comiccollections")]
-    public class ComicCollectionRepository
+    public class ComicCollectionRepository : IComicCollectionRepository
     {
         readonly ApplicationDbContext _context;
         private IRestClient _restClient;
@@ -24,19 +22,35 @@ namespace ComicCollector.DAL
 
 
 
-        public ComicCollection Get(int id)
+        public Comic Get(int id)
         {
             return _context.ComicCollection.Find(id);
         }
 
-        public IEnumerable<ComicCollection> GetAll()
+        public IEnumerable<Models.Comic> GetAll()
         {
             var request = new RestRequest("v1/public/series?titleStartsWith=wolverine&apikey=570494d5a6a681b21681b10b3bf4d61c", Method.GET);
 
-            var response = _restClient.Get<List<ComicCollection>>(request);
+            var response = _restClient.Get<List<Models.Comic>>(request);
 
             return response.Data;
 
         }
+
+        public void Save(Models.Comic newComic)
+        {
+            _context.ComicCollection.Add(newComic);
+            _context.SaveChanges();
+        }
+
+        //Controllers.Comic IComicCollectionRepository.Get(int id)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //IEnumerable<Controllers.Comic> IComicCollectionRepository.GetAll()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

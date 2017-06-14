@@ -23,10 +23,10 @@ app.factory('ComicCollectionFactory', function ($q, $http, MY_API_CONFIG) {
         return $q((resolve, reject) => {
             $http.post(`${MY_API_CONFIG.databaseURL}/Comics.json`,
               JSON.stringify({
-                  comicName: newComic.resortName,
-                  address: newComic.address,
-                  zipcode: newComic.zipcode,
-                  uid: newComic.uid
+                  Series: newComic.Series,
+                  Title: newComic.Title,
+                  Description: newComic.Description,
+                  Uid: newComic.Uid
               })
             )
               .success(function (postResponse) {

@@ -9,30 +9,31 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ComicCollector.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ComicCollector.Controllers
 {
     public class ComicCollectionsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private ComicCollection _comicCollection;
+        private Models.Comic _comicCollection;
 
-        public ComicCollectionsController(ComicCollection comicCollection)
+        public ComicCollectionsController(Models.Comic comicCollection)
         {
             _comicCollection = comicCollection;
         }
 
         // GET: api/ComicCollections
-        public IQueryable<ComicCollection> GetComicCollection()
+        public IQueryable<Models.Comic> GetComicCollection()
         {
             return db.ComicCollection;
         }
 
         // GET: api/ComicCollections/5
-        [ResponseType(typeof(ComicCollection))]
+        [ResponseType(typeof(Models.Comic))]
         public IHttpActionResult GetComicCollection(int id)
         {
-            ComicCollection comicCollection = db.ComicCollection.Find(id);
+            Models.Comic comicCollection = db.ComicCollection.Find(id);
             if (comicCollection == null)
             {
                 return NotFound();
@@ -43,7 +44,7 @@ namespace ComicCollector.Controllers
 
         // PUT: api/ComicCollections/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutComicCollection(int id, ComicCollection comicCollection)
+        public IHttpActionResult PutComicCollection(int id, Models.Comic comicCollection)
         {
             if (!ModelState.IsValid)
             {
@@ -77,13 +78,15 @@ namespace ComicCollector.Controllers
         }
 
         // POST: api/ComicCollections
-        [ResponseType(typeof(ComicCollection))]
-        public IHttpActionResult PostComicCollection(ComicCollection comicCollection)
+        [ResponseType(typeof(Models.Comic))]
+        public IHttpActionResult PostComicCollection(Models.Comic comicCollection)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            //comicCollection.Uid = int.Parse(User.Identity.GetUserId());
 
             db.ComicCollection.Add(comicCollection);
             db.SaveChanges();
@@ -92,10 +95,10 @@ namespace ComicCollector.Controllers
         }
 
         // DELETE: api/ComicCollections/5
-        [ResponseType(typeof(ComicCollection))]
+        [ResponseType(typeof(Models.Comic))]
         public IHttpActionResult DeleteComicCollection(int id)
         {
-            ComicCollection comicCollection = db.ComicCollection.Find(id);
+            Models.Comic comicCollection = db.ComicCollection.Find(id);
             if (comicCollection == null)
             {
                 return NotFound();
