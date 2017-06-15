@@ -4,9 +4,12 @@ app.controller("ComicCollectionCtrl", function ($scope, $rootScope, $location, C
     $scope.comics = [];
 
     let getComics = function () {
-        ComicCollectionFactory.getComicCollection($rootScope.user.uid).then(function (dbComics) {
-            $scope.comics = dbComics;
-            $scope.comics = {};
+        ComicCollectionFactory.getComicCollection().then(function (response) {
+            console.log("response", response);
+            $scope.comics = response.data;
+            console.log("scope comics", $scope.comics);
+
+            //$scope.comics = {};
         })
     }
 

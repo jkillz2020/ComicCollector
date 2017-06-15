@@ -18,6 +18,7 @@ namespace ComicCollector.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/ComicCollections
+        [HttpGet, Route("api/comiccollection")]
         public IQueryable<Comic> GetComicCollection()
         {
             return db.ComicCollection;

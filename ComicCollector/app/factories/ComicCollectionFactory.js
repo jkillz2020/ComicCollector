@@ -1,21 +1,21 @@
 ﻿"use strict";
 
 app.factory('ComicCollectionFactory', function ($q, $http) {
-
-    var getComicCollection = function (userId) {
+    
+    var getComicCollection = function () {
         return $q((resolve, reject) => {
-            $http.get(`${MY_API_CONFIG.databaseURL}/Comics.json?orderBy="uid"&equalTo="${userId}"`)
+            $http.get('api/comiccollection')
               .then(function (response) {
-                  let Comics = [];
-                  Object.keys(response).forEach(function (key) {
-                      response[key].id = key;
-                      Comics.push(response[key]);
-                  });
-                  resolve(Comics);
-              })
-              .error(function (errorResponse) {
+                  let Comic = [];
+                  //Object.keys(response).forEach(function (key) {
+                  //response[key].id = key;
+                  //Comics.push();
+                  resolve(response);
+                  console.log("response from my api", response);
+                  //$scope.response = response.data;
+              }, function (errorResponse) {
                   reject(errorResponse);
-              })
+              });
         })
     }
 
