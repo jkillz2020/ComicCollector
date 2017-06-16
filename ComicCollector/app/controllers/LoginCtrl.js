@@ -1,4 +1,4 @@
-﻿app.controller("LoginCtrl", ["$scope", "$http", "$location", function($scope, $http, $location){
+﻿app.controller("LoginCtrl", ["$scope", "$http", "$location", function ($scope, $http, $location) {
     $scope.username =""
     $scope.password ="";
     $scope.login = function () {
@@ -20,8 +20,8 @@
             sessionStorage.setItem("token", result.data.access_token);
             $http.defaults.headers.common['Authorization'] = `bearer ${result.data.access_token}`;
 
-            $location.path("/home")
-        });
+                $location.path("/home");
+            });
      }
    }
   ])

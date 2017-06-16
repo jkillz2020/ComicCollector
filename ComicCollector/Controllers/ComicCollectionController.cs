@@ -73,6 +73,7 @@ namespace ComicCollector.Controllers
         }
 
         // POST: api/ComicCollections
+        [HttpPost, Route("api/comiccollection")]
         [ResponseType(typeof(Models.Comic))]
         public IHttpActionResult PostComicCollection(Comic comicCollection)
         {
@@ -81,19 +82,24 @@ namespace ComicCollector.Controllers
                 return BadRequest(ModelState);
             }
 
-            //comicCollection.Uid = int.Parse(User.Identity.GetUserId());
+            //var uid = User.Identity.GetUserId<int>();
+            //comicCollection.Uid = uid;
+            comicCollection.Uid = int.Parse(User.Identity.GetUserId());
 
             db.ComicCollection.Add(comicCollection);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = comicCollection.ComicId }, comicCollection);
+            ////var x= CreatedAtRoute("DefaultApi", new {id = comicCollection.ComicId }, comicCollection);
+            var x= CreatedAtRoute("DefaultApi", new {controller = "findComic"} ,comicCollection);
+            return x;
         }
 
         // DELETE: api/ComicCollections/5
         [ResponseType(typeof(Models.Comic))]
+        [HttpDelete, Route("api/comiccollection/Comics.Id")]
         public IHttpActionResult DeleteComicCollection(int id)
         {
-            Models.Comic comicCollection = db.ComicCollection.Find(id);
+            var comicCollection = db.ComicCollection.Find(id);
             if (comicCollection == null)
             {
                 return NotFound();

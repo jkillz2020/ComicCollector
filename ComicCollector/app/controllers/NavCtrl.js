@@ -4,15 +4,15 @@ app.controller('NavCtrl', function ($scope) {
     $scope.navItems = [
       {
           name: "Logout",
-          url: "#/logout"
+          url: "#!/logout"
       },
       {
           name: "My Comics",
-          url: "#/comics/collection"
+          url: "#!/home"
       },
       {
           name: "Find Comics",
-          url: "#/comics/find-comics"
+          url: "#!/find-comics"
       }
     ];
 });

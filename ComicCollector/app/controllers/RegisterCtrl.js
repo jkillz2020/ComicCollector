@@ -1,8 +1,8 @@
 ﻿app.controller("RegisterCtrl", ["$scope", "$http", "$location",
     function ($scope, $http, $location) {
         $scope.Email = "a@a.com",
-            $scope.Password = "123456",
-            $scope.ConfirmPassword = "123456";
+            $scope.Password = "123456aA!",
+            $scope.ConfirmPassword = "123456aA!";
 
         $scope.Register = function () {
             var newUser = {

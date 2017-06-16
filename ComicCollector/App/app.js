@@ -33,10 +33,10 @@ app.config([
 
 app.run(["$http", function ($http) {
 
-    var token = sessionStorage.getItem('token');
+    var token = sessionStorage.getItem("token");
 
     if (token)
-        $http.defaults.headers.common['Authorization'] = `bearer ${token}`;
+        $http.defaults.headers.common["Authorization"] = `bearer ${token}`;
 
 }
 ]);

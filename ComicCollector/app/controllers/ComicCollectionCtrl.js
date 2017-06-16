@@ -17,10 +17,10 @@ app.controller("ComicCollectionCtrl", function ($scope, $rootScope, $location, C
 
     $scope.deleteComic = function (comicId) {
         console.log("you deleted a comic", comicId);
-        ComicCollectionFactory.deleteComic(comicId).then(function (response) {
-            console.log("here now", response)
+        ComicCollectionFactory.deleteComic(comicId).then(function(response) {
+            console.log("here now", response);
             getComics();
-        })
+        });
     }
 
    

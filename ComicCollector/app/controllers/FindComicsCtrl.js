@@ -1,13 +1,13 @@
 ﻿"use strict";
 
 app.controller("FindComicsCtrl", function ($scope, $rootScope, $routeParams, ComicFinderFactory, ComicCollectionFactory) {
-    let seriestitle = $routeParams.seriestitle
+    let seriestitle = $routeParams.seriestitle;
     let getComicInfo = function (searchInfo) {
         console.log("searchInfo", searchInfo);
-        ComicFinderFactory.getComicInfo(searchInfo).then(function (response) {
+        ComicFinderFactory.getComicInfo(searchInfo).then(function(response) {
             $scope.comicInfo = response;
             console.log("comicInfo", $scope.comicInfo);
-        })
+        });
     }
 
     $scope.addComicToCollection = function (comic) {
@@ -20,10 +20,10 @@ app.controller("FindComicsCtrl", function ($scope, $rootScope, $routeParams, Com
         };
         // console.log("comicInfo", comicInfo);
         console.log("ApiComic", ApiComic);
-        ComicCollectionFactory.postNewComic(ApiComic).then(function (comicId) {
-            $location.url("/home");
+        ComicCollectionFactory.postNewComic(ApiComic).then(function(comicId) {
+            ////$location.url("/home");
             $scope.newComic = {};
-        })
+        });
     }
 
     $scope.getComicInfo = getComicInfo;

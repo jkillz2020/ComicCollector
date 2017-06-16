@@ -20,10 +20,13 @@
                 @Html.ActionLink("Comic Collector", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Find Comics", "Index", "FindComicsCtrl", new { area = "find-comics.html" }, null)</li>
-                </ul>
+                <div ng-controller="NavCtrl">
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav" ng-repeat="thingy in navItems">
+                            <li><a href="{{thingy.url}}">{{thingy.name}}</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

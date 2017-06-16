@@ -32,7 +32,7 @@ app.factory('ComicCollectionFactory', function ($q, $http) {
 
     var deleteComic = function (comicId) {
         return $q((resolve, reject) => {
-            $http.delete(`${MY_API_CONFIG.databaseURL}/Comics/${comicId}.json`)
+            $http.delete(`api/comiccollection/id${comicId}`)
             .then(function (deleteResponse) {
                 resolve(deleteResponse);
             })
@@ -46,7 +46,7 @@ app.factory('ComicCollectionFactory', function ($q, $http) {
         getComicCollection: getComicCollection,
         postNewComic: postNewComic,
         deleteComic: deleteComic,
-        //getSingleResort: getSingleResort,
+        //getSingleComic: getSingleComic,
     }
 
 });
