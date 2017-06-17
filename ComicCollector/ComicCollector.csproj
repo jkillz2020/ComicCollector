@@ -302,6 +302,10 @@
     <Compile Include="Migrations\201706142239364_newComicModel.Designer.cs">
       <DependentUpon>201706142239364_newComicModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706162319168_fixUidinComic.cs" />
+    <Compile Include="Migrations\201706162319168_fixUidinComic.Designer.cs">
+      <DependentUpon>201706162319168_fixUidinComic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -418,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706142239364_newComicModel.resx">
       <DependentUpon>201706142239364_newComicModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706162319168_fixUidinComic.resx">
+      <DependentUpon>201706162319168_fixUidinComic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

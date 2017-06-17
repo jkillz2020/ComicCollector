@@ -21,7 +21,8 @@ namespace ComicCollector.Controllers
         [HttpGet, Route("api/comiccollection")]
         public IQueryable<Comic> GetComicCollection()
         {
-            return db.ComicCollection;
+            var uid = User.Identity.GetUserId();
+            return db.ComicCollection.Where(comic => comic.Uid == uid);
         }
 
         // GET: api/ComicCollections/5
@@ -84,7 +85,7 @@ namespace ComicCollector.Controllers
 
             //var uid = User.Identity.GetUserId<int>();
             //comicCollection.Uid = uid;
-            comicCollection.Uid = int.Parse(User.Identity.GetUserId());
+            comicCollection.Uid = User.Identity.GetUserId();
 
             db.ComicCollection.Add(comicCollection);
             db.SaveChanges();
@@ -96,7 +97,7 @@ namespace ComicCollector.Controllers
 
         // DELETE: api/ComicCollections/5
         [ResponseType(typeof(Models.Comic))]
-        [HttpDelete, Route("api/comiccollection/Comics.Id")]
+        [HttpDelete, Route("api/comiccollection/{id}")]
         public IHttpActionResult DeleteComicCollection(int id)
         {
             var comicCollection = db.ComicCollection.Find(id);
