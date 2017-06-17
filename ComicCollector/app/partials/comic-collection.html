@@ -1,11 +1,10 @@
 ﻿<div class = "container" ng-repeat="comic in comics">
 
-    <div class="col-md-3 col-md-offset-1">
+    <div class="col-lg-5 col-lg-offset-1">
         <div class="row">{{comic.Title}}</div>
         <div class="row">{{comic.data.IssueNumber}}</div>
         <div class="row">{{comic.Description}}</div>
         <div class="row"><img ng-src="{{comic.Image}}/portrait_uncanny.jpg" alt="Comic Image" /></div>
+        <div class="col-lg-3 col-lg-offset-1"><button class="btn btn-danger" ng-click="deleteComic(comic.ComicId)">Remove Comic!</button></div>
     </div>
-    <div class="col-xs-1"><button class="btn btn-danger" ng-click="deleteComic(comic.ComicId)">Remove Comic!</button></div>
-
 </div>
