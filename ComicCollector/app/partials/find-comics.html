@@ -2,13 +2,13 @@
     <input type="search" name="comicSearch" placeholder="Find your comics!" ng-model="searchInfo"/>
     <button type="button" class="btn btn-danger" ng-click="getComicInfo(searchInfo)">Find!</button>
 </div>
-<div ng-repeat="object in comicInfo">
+<div ng-repeat="object in comicInfo" style="font-family: 'Spectral', serif;">
 
     <div class="col-md-5 col-md-offset-1">
         <div class="row">{{object.Title}}</div>
         <div class="row">{{object.Series.Name}}</div>
         <div class="row">{{object.Description}}</div>
         <div class="row"><img ng-src="{{object.Thumbnail.Path}}/portrait_uncanny.jpg" alt="Comic Image"/></div>
-        <button type="button" class="btn btn-primary" ng-click="addComicToCollection(object)">Add To Your Collection!</button>
+        <button type="button" class="btn btn-primary" ng-click="addComicToCollection(object)">{{object.buttonText}}</button>
     </div>
 </div>  

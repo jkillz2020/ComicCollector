@@ -1,15 +1,13 @@
 ﻿"use strict";
 
-app.factory('ComicCollectionFactory', function ($q, $http) {
+app.factory("comicCollectionFactory", function ($q, $http) {
     
     var getComicCollection = function () {
         return $q((resolve, reject) => {
             $http.get('api/comiccollection')
                 .then(function(response) {
-                        let Comic = [];
+                        let comic = [];
                         resolve(response);
-                        console.log("response from my api", response);
-                        //$scope.response = response.data;
                     },
                     function(errorResponse) {
                         reject(errorResponse);
@@ -44,8 +42,7 @@ app.factory('ComicCollectionFactory', function ($q, $http) {
     return {
         getComicCollection: getComicCollection,
         postNewComic: postNewComic,
-        deleteComic: deleteComic,
-        //getSingleComic: getSingleComic,
+        deleteComic: deleteComic
     }
 
 });

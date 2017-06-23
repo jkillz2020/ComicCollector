@@ -15,21 +15,21 @@ namespace ComicCollector.Controllers
 {
     public class ComicCollectionController : ApiController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: api/ComicCollections
         [HttpGet, Route("api/comiccollection")]
         public IQueryable<Comic> GetComicCollection()
         {
             var uid = User.Identity.GetUserId();
-            return db.ComicCollection.Where(comic => comic.Uid == uid);
+            return _db.ComicCollection.Where(comic => comic.Uid == uid);
         }
 
         // GET: api/ComicCollections/5
         [ResponseType(typeof(Models.Comic))]
         public IHttpActionResult GetComicCollection(int id)
         {
-            Models.Comic comicCollection = db.ComicCollection.Find(id);
+            Models.Comic comicCollection = _db.ComicCollection.Find(id);
             if (comicCollection == null)
             {
                 return NotFound();
@@ -52,11 +52,11 @@ namespace ComicCollector.Controllers
                 return BadRequest();
             }
 
-            db.Entry(comicCollection).State = EntityState.Modified;
+            _db.Entry(comicCollection).State = EntityState.Modified;
 
             try
             {
-                db.SaveChanges();
+                _db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -83,14 +83,12 @@ namespace ComicCollector.Controllers
                 return BadRequest(ModelState);
             }
 
-            //var uid = User.Identity.GetUserId<int>();
-            //comicCollection.Uid = uid;
+           
             comicCollection.Uid = User.Identity.GetUserId();
 
-            db.ComicCollection.Add(comicCollection);
-            db.SaveChanges();
+            _db.ComicCollection.Add(comicCollection);
+            _db.SaveChanges();
 
-            ////var x= CreatedAtRoute("DefaultApi", new {id = comicCollection.ComicId }, comicCollection);
             var x= CreatedAtRoute("DefaultApi", new {controller = "findComic"} ,comicCollection);
             return x;
         }
@@ -100,14 +98,14 @@ namespace ComicCollector.Controllers
         [HttpDelete, Route("api/comiccollection/{id}")]
         public IHttpActionResult DeleteComicCollection(int id)
         {
-            var comicCollection = db.ComicCollection.Find(id);
+            var comicCollection = _db.ComicCollection.Find(id);
             if (comicCollection == null)
             {
                 return NotFound();
             }
 
-            db.ComicCollection.Remove(comicCollection);
-            db.SaveChanges();
+            _db.ComicCollection.Remove(comicCollection);
+            _db.SaveChanges();
 
             return Ok(comicCollection);
         }
@@ -116,14 +114,14 @@ namespace ComicCollector.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool ComicCollectionExists(int id)
         {
-            return db.ComicCollection.Count(e => e.ComicId == id) > 0;
+            return _db.ComicCollection.Count(e => e.ComicId == id) > 0;
         }
     }
 }
