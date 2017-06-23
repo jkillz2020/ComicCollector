@@ -320,12 +320,12 @@
     <Content Include="app\app.js" />
     <Content Include="app\appConstants.js" />
     <Content Include="app\controllers\NavCtrl.js" />
+    <Content Include="app\css\style.css" />
     <Content Include="app\factories\ComicCollectionFactory.js" />
     <Content Include="app\partials\comic-collection.html" />
     <Content Include="app\partials\comic-detail.html" />
     <Content Include="app\controllers\ComicApiCtrl.js" />
     <Content Include="app\controllers\ComicCollectionCtrl.js" />
-    <Content Include="app\partials\edit-comic.html" />
     <Content Include="app\factories\ComicFinderFactory.js" />
     <Content Include="app\partials\find-comics.html" />
     <Content Include="app\controllers\FindComicsCtrl.js" />

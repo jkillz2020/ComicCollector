@@ -1,35 +1,30 @@
 ﻿var app = angular.module("ComicCollector", ["ngRoute"]);
 
 app.config([
-    "$routeProvider", function ($routeProvider) {
+    "$routeProvider", function($routeProvider) {
         $routeProvider
             .when("/",
-            {
-                templateUrl: "app/partials/login.html",
-                controller: "LoginCtrl"
-            })
+                {
+                    templateUrl: "app/partials/login.html",
+                    controller: "LoginCtrl"
+                })
             .when("/register",
-            {
-                templateUrl: "app/partials/register.html",
-                controller: "RegisterCtrl"
-            })
+                {
+                    templateUrl: "app/partials/register.html",
+                    controller: "RegisterCtrl"
+                })
             .when("/home",
-            {
-                templateUrl: "app/partials/comic-collection.html",
-                controller: "ComicCollectionCtrl"
-            })
-           .when("/find-comics",
-           {
-               templateUrl: "app/partials/find-comics.html",
-               controller: "FindComicsCtrl"
-           })
-           .when("/detail-view",
-           {
-               templateUrl: "app/partials/comic-detail.html",
-               controller: "ComicDetailCtrl"
-           });
+                {
+                    templateUrl: "app/partials/comic-collection.html",
+                    controller: "ComicCollectionCtrl"
+                })
+            .when("/find-comics",
+                {
+                    templateUrl: "app/partials/find-comics.html",
+                    controller: "FindComicsCtrl"
+                });
     }
-])
+]);
 
 app.run(["$http", function ($http) {
 

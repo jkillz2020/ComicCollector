@@ -24,11 +24,14 @@ namespace ComicCollector
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/App/css").Include(
+                "~/app/style.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                      "~/Scripts/angular.js",
                      "~/Scripts/angular-route.js",
-                     "~/App/app.js")
-            .IncludeDirectory("~/App", "*.js", true));
+                     "~/app/app.js")
+            .IncludeDirectory("~/app", "*.js", true));
         }
     }
 }

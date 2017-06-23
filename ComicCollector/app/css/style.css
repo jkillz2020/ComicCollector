@@ -1,0 +1,16 @@
+﻿#my-style {
+    font-family: 'Spectral', serif;
+}
+
+#my-nav-header {
+    font-family: 'Spectral', serif;
+    color: black;
+}
+
+ul {
+    color: black;
+}
+
+body {
+    background-image: url(https://s-media-cache-ak0.pinimg.com/originals/cf/50/b1/cf50b1143501be0918595f4a1041b35b.jpg);
+}
